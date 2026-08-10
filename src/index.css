@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-savanna;
+  }
+
+  ::selection {
+    @apply bg-ochre/20 text-savanna;
+  }
+
+  /* Visible keyboard focus everywhere — never remove outlines */
+  :focus-visible {
+    outline: 2px solid #b4622a;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Eyebrow label — small caps used above section headings */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-widest2 text-ochre;
+  }
+
+  /* Signature element: the horizon-line divider.
+     A thin animated line evoking the savanna skyline at dusk —
+     used as the site's one recurring visual signature between
+     major sections. Not decoration on every block; used sparingly. */
+  .horizon-divider {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      theme("colors.gold") 20%,
+      theme("colors.ochre.DEFAULT") 50%,
+      theme("colors.gold") 80%,
+      transparent 100%
+    );
+    opacity: 0.55;
+  }
+
+  .container-content {
+    @apply mx-auto w-full max-w-content px-6 md:px-10;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-ochre px-6 py-3 text-sm font-semibold uppercase tracking-wide text-cream transition-colors hover:bg-ochre-dark;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-savanna px-6 py-3 text-sm font-semibold uppercase tracking-wide text-savanna transition-colors hover:bg-savanna hover:text-cream;
+  }
+}

@@ -1,0 +1,18 @@
+// Real Oliphant Safaris contact and social details.
+// Update here — Footer.jsx and Contact.jsx both read from this file.
+
+export const contactInfo = {
+  email: "info@oliphantsafaris.com",
+  // Converted from local format (0711 492 260) to international for reliable tel: links
+  phone: "+254 711 492 260",
+  whatsappUrl: "https://wa.me/qr/KWRNU5HW7AJTD1",
+  location: "Banana Raini Rd, Ruaka",
+};
+
+export const socialLinks = {
+  // Best-guess URL from "@Oliphant Safaris" — VERIFY this actually resolves
+  // to the real page, since Facebook usernames can differ from display names
+  facebook: "https://www.facebook.com/OliphantSafaris",
+  instagram: "https://www.instagram.com/oliphant_safaris/",
+  tiktok: "https://www.tiktok.com/@oliphant_safaris",
+};
