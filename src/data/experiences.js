@@ -1,7 +1,6 @@
-// Real descriptions/locations from Oliphant Safaris' EXPERIENCES doc for 8
-// of these; Wildlife Photography isn't covered by that doc, so its
-// description is still PLACEHOLDER. Bush Dinner and Bush Breakfast are
-// split into two cards per the source doc (previously one combined card).
+// Real descriptions/locations for all 9 experiences. Bush Dinner and Bush
+// Breakfast are split into two cards per the source doc (previously one
+// combined card).
 
 import hotAirBalloonsFleet from "../assets/gallery/hot-air-balloons-fleet.jpg";
 import leopardOnBranch from "../assets/gallery/leopard-on-branch.jpg";
@@ -32,10 +31,10 @@ export const experiences = [
   {
     slug: "wildlife-photography",
     name: "Wildlife Photography",
-    location: null,
+    location: "Kenya",
     image: leopardOnBranch,
     description:
-      "PLACEHOLDER — describe the photography-focused experience: guide expertise, vehicle setup, best times of day.",
+      "Capture unforgettable moments as you photograph Kenya's wildlife in their natural surroundings. Enjoy opportunities to observe and photograph animals, landscapes and the beauty of the wild while creating lasting memories of your safari.",
   },
   {
     slug: "hiking-nature-walks",
@@ -67,7 +66,6 @@ export const experiences = [
     slug: "bush-breakfast",
     name: "Bush Breakfast",
     location: "Maasai Mara, Amboseli & Tsavo",
-    price: "From KSh 4,000 pp",
     image: bushBreakfastPhoto,
     description:
       "Start your morning with a delicious breakfast in the heart of the wilderness. Enjoy great food, beautiful scenery and the peaceful atmosphere of the African bush.",

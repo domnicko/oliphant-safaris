@@ -10,7 +10,6 @@ const CATEGORIES = [
   "All Safaris",
   "Kenya Safaris",
   "Tanzania Safaris",
-  "Uganda Safaris",
   "Beach Holiday",
   "Beach & Safari",
   "Luxury Safaris",

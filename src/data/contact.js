@@ -10,9 +10,7 @@ export const contactInfo = {
 };
 
 export const socialLinks = {
-  // Best-guess URL from "@Oliphant Safaris" — VERIFY this actually resolves
-  // to the real page, since Facebook usernames can differ from display names
-  facebook: "https://www.facebook.com/OliphantSafaris",
+  facebook: "https://www.facebook.com/share/1ErDFSyX92/?mibextid=wwXIfr",
   instagram: "https://www.instagram.com/oliphant_safaris/",
   tiktok: "https://www.tiktok.com/@oliphant_safaris",
 };

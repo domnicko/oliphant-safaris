@@ -1,32 +1,26 @@
-import { Compass, ShieldCheck, Leaf, HeartHandshake } from "lucide-react";
+import { Compass, ShieldCheck, Users } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import CTASection from "../components/ui/CTASection.jsx";
 import { team } from "../data/team.js";
 
-const values = [
+const whyChooseUs = [
   {
     icon: ShieldCheck,
-    title: "Integrity",
+    title: "Safety & Reliability",
     description:
-      "PLACEHOLDER — describe what integrity means in how Oliphant Safaris operates and communicates with travelers.",
-  },
-  {
-    icon: Leaf,
-    title: "Sustainability",
-    description:
-      "PLACEHOLDER — describe environmental and community sustainability commitments once confirmed.",
+      "Your safety and comfort are important to us. We carefully plan each journey and work with reliable service providers to ensure a smooth and well-organized experience.",
   },
   {
     icon: Compass,
-    title: "Excellence",
+    title: "Personalized Itineraries",
     description:
-      "PLACEHOLDER — describe the standard of service and experience travelers can expect.",
+      "We tailor each safari to your interests, budget and preferred pace. Whether you want wildlife, adventure, relaxation or culture, we help create a journey that suits you.",
   },
   {
-    icon: HeartHandshake,
-    title: "Community",
+    icon: Users,
+    title: "Local Expertise",
     description:
-      "PLACEHOLDER — describe relationships with local communities and how travel supports them.",
+      "Our knowledge of Kenya helps us guide you towards destinations and experiences that match your interests. We provide practical advice to help you make the most of your time in Kenya.",
   },
 ];
 
@@ -35,7 +29,7 @@ export default function About() {
     <>
       <Seo
         title="About Us"
-        description="Learn about Oliphant Safaris — our story, mission, values, and approach to responsible tourism across Kenya and East Africa."
+        description="Learn about Oliphant Safaris — our story, mission, values, and what sets our journeys apart across Kenya and East Africa."
       />
       {/* Page header */}
       <section className="bg-savanna py-20 text-cream">
@@ -99,58 +93,27 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="container-content py-20">
-        <div className="text-center">
-          <p className="eyebrow">What We Stand For</p>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl md:text-4xl">
-            Our Values
-          </h2>
-        </div>
-
-        <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {values.map(({ icon: Icon, title, description }) => (
-            <div key={title} className="text-center">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-savanna/10 text-savanna">
-                <Icon size={26} />
-              </div>
-              <h3 className="mt-4 text-lg">{title}</h3>
-              <p className="mt-2 text-sm text-stone">{description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div className="horizon-divider" />
-
       {/* Why travel with us */}
       <section className="bg-sand-light py-20">
-        <div className="container-content mx-auto max-w-3xl text-center">
-          <p className="eyebrow">Why Travel With Us</p>
-          <h2 className="mt-3 text-3xl md:text-4xl">
-            What Sets Oliphant Safaris Apart
-          </h2>
-          <p className="mt-6 text-stone">
-            PLACEHOLDER — replace with the real reasons travelers choose
-            Oliphant Safaris over other operators: expertise, personalization,
-            relationships with lodges and guides, or anything else that's
-            genuinely true and confirmed.
-          </p>
-        </div>
-      </section>
+        <div className="container-content">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">Why Travel With Us</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">
+              What Sets Oliphant Safaris Apart
+            </h2>
+          </div>
 
-      {/* Responsible tourism */}
-      <section className="container-content py-20">
-        <div className="mx-auto max-w-3xl">
-          <p className="eyebrow">Our Commitment</p>
-          <h2 className="mt-3 text-3xl md:text-4xl">
-            Our Approach to Responsible Tourism
-          </h2>
-          <p className="mt-6 text-stone">
-            PLACEHOLDER — replace with real detail on environmental practices,
-            support for local communities, and wildlife conservation
-            commitments. Only include specifics that are true and confirmed.
-          </p>
+          <div className="mt-14 grid gap-10 sm:grid-cols-3">
+            {whyChooseUs.map(({ icon: Icon, title, description }) => (
+              <div key={title} className="text-center">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-savanna/10 text-savanna">
+                  <Icon size={26} />
+                </div>
+                <h3 className="mt-4 text-lg">{title}</h3>
+                <p className="mt-2 text-sm text-stone">{description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
