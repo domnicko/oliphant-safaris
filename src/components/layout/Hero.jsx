@@ -22,9 +22,7 @@ export default function Hero() {
           Authentic Safari Journeys, Planned Around You
         </h1>
         <p className="mt-6 max-w-xl text-lg text-cream/85">
-          Oliphant Safaris designs personalized wildlife and adventure
-          experiences across Kenya and East Africa — for couples, families,
-          and travelers seeking the real Africa.
+          At Oliphant Safaris we are passionate about showcasing Kenya's breathtaking wildlife, culture and landscape through unforgettable safari adventures.
         </p>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">

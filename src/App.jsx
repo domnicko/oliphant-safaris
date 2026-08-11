@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/layout/Navbar.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import ScrollToTop from "./components/layout/ScrollToTop.jsx";
+import FloatingWhatsApp from "./components/layout/FloatingWhatsApp.jsx";
 
 import Home from "./pages/Home.jsx";
 import Safaris from "./pages/Safaris.jsx";
@@ -43,6 +44,7 @@ function App() {
         </div>
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }

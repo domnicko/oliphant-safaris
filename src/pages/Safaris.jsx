@@ -11,7 +11,7 @@ const CATEGORIES = [
   "Kenya Safaris",
   "Tanzania Safaris",
   "Uganda Safaris",
-  "Rwanda Safaris",
+  "Beach Holiday",
   "Beach & Safari",
   "Luxury Safaris",
   "Family Safaris",
@@ -53,6 +53,22 @@ export default function Safaris() {
             Browse safari packages across Kenya and East Africa. Filter by
             style or search by name and destination to find the right trip.
           </p>
+        </div>
+      </section>
+
+      {/* Services summary — every safari can include these arrangements */}
+      <section className="bg-sand-light py-8">
+        <div className="container-content flex flex-col items-center gap-2 text-center text-sm text-stone md:flex-row md:justify-center md:gap-3">
+          <span>
+            Every safari can include hotel booking, airport transfers, SGR
+            bookings, and domestic flights.
+          </span>
+          <Link
+            to="/#our-services"
+            className="font-semibold text-ochre hover:text-ochre-dark"
+          >
+            See Our Services →
+          </Link>
         </div>
       </section>
 

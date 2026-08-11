@@ -1,3 +1,4 @@
+import { MapPin } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import CTASection from "../components/ui/CTASection.jsx";
 import { experiences } from "../data/experiences.js";
@@ -35,14 +36,27 @@ export default function Experiences() {
               <div className="h-56 overflow-hidden">
                 <img
                   src={experience.image}
-                  alt={`${experience.name} — PLACEHOLDER image`}
+                  alt={experience.name}
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div className="p-6">
-                <h2 className="text-xl text-savanna">{experience.name}</h2>
-                <p className="mt-2 text-sm text-stone">{experience.description}</p>
+                <div className="flex items-start justify-between gap-2">
+                  <h2 className="text-xl text-savanna">{experience.name}</h2>
+                  {experience.price && (
+                    <span className="shrink-0 rounded-full bg-ochre/10 px-3 py-1 text-xs font-semibold text-ochre">
+                      {experience.price}
+                    </span>
+                  )}
+                </div>
+                {experience.location && (
+                  <p className="mt-1 flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-stone">
+                    <MapPin size={12} className="text-ochre" />
+                    {experience.location}
+                  </p>
+                )}
+                <p className="mt-3 text-sm text-stone">{experience.description}</p>
               </div>
             </article>
           ))}

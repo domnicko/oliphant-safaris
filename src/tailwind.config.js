@@ -38,9 +38,22 @@ export default {
           "0%": { opacity: "0", transform: "translateY(16px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "page-in": {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        wobble: {
+          "0%, 92%, 100%": { transform: "rotate(0deg) scale(1)" },
+          "93%": { transform: "rotate(-14deg) scale(1.08)" },
+          "95%": { transform: "rotate(11deg) scale(1.08)" },
+          "97%": { transform: "rotate(-7deg) scale(1.04)" },
+          "99%": { transform: "rotate(4deg) scale(1.02)" },
+        },
       },
       animation: {
         "fade-rise": "fade-rise 0.7s ease-out forwards",
+        "page-in": "page-in 300ms ease-out",
+        wobble: "wobble 4.5s ease-in-out infinite",
       },
     },
   },

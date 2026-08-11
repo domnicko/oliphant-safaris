@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Compass, Users, Heart } from "lucide-react";
+import { Hotel, Car, TrainFront, Plane } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import Hero from "../components/layout/Hero.jsx";
 import TourCard from "../components/ui/TourCard.jsx";
@@ -9,30 +9,30 @@ import { safaris } from "../data/safaris.js";
 import { testimonials } from "../data/testimonials.js";
 import { galleryPreviewImages } from "../data/gallery.js";
 
-const whyChooseUs = [
+const ourServices = [
   {
-    icon: ShieldCheck,
-    title: "Safety & Reliability",
+    icon: Hotel,
+    title: "Hotel Booking",
     description:
-      "PLACEHOLDER — describe safety standards, vehicle maintenance, and guide vetting once confirmed.",
+      "We help you find and book accommodation that matches your budget, destination and travel needs. From budget hotels to luxury lodges and safari camps, we handle the booking process for you. We arrange: Nairobi hotels, safari lodges, beach resorts, camps and city accommodation.",
   },
   {
-    icon: Compass,
-    title: "Personalized Itineraries",
+    icon: Car,
+    title: "Airport Transfers",
     description:
-      "PLACEHOLDER — describe how trips are tailored to each traveler's interests and pace.",
+      "Enjoy a smooth arrival or departure with our private airport transfer services. Our drivers pick you up from the airport and transfer you safely to your hotel, safari destination or other preferred location. Available from: JKIA, Wilson Airport and other major airports across Kenya.",
   },
   {
-    icon: Users,
-    title: "Local Expertise",
+    icon: TrainFront,
+    title: "SGR Bookings",
     description:
-      "PLACEHOLDER — describe guide experience and on-the-ground knowledge once confirmed.",
+      "Let us arrange your Standard Gauge Railway (SGR) tickets for convenient travel between Nairobi and Mombasa. We assist with ticket booking and provide the travel details you need before your journey. Routes: Nairobi – Mombasa and Mombasa – Nairobi and other in between routes.",
   },
   {
-    icon: Heart,
-    title: "Kenyan Hospitality",
+    icon: Plane,
+    title: "Flight Bookings",
     description:
-      "PLACEHOLDER — describe the warmth and care travelers can expect throughout their journey.",
+      "Save time by flying between Kenya's major destinations. We arrange domestic flights to popular destinations including Maasai Mara, Diani, Mombasa, Malindi, Kisumu, Amboseli, and other destinations.",
   },
 ];
 
@@ -54,11 +54,6 @@ export default function Home() {
         <h2 className="mx-auto mt-3 max-w-2xl text-3xl md:text-4xl">
           Your Journey Into the Heart of East Africa
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-stone">
-          At Oliphant Safaris we are passionate about showcasing Kenya's
-          breathtaking wildlife, culture and landscape through unforgettable
-          safari adventures.
-        </p>
       </section>
 
       <div className="horizon-divider" />
@@ -87,23 +82,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why choose us */}
-      <section className="container-content py-20">
-        <div className="text-center">
-          <p className="eyebrow">Why Travel With Us</p>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl md:text-4xl">
-            Why Choose Oliphant Safaris
-          </h2>
+      {/* Our services */}
+      <section id="our-services" className="container-content py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="eyebrow">How We Help</p>
+          <h2 className="mt-3 text-3xl md:text-4xl">Our Services</h2>
+          <p className="mt-4 text-stone">
+            Beyond tours and safaris, we make your entire journey easier.
+            From accommodation and airport transfers to train and domestic
+            flight bookings, we take care of the essential travel
+            arrangements so you can enjoy a smooth and stress-free trip.
+          </p>
         </div>
 
-        <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {whyChooseUs.map(({ icon: Icon, title, description }) => (
-            <div key={title} className="text-center">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-savanna/10 text-savanna">
+        <div className="mt-14 grid gap-10 sm:grid-cols-2">
+          {ourServices.map(({ icon: Icon, title, description }) => (
+            <div key={title} className="flex gap-4">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-savanna/10 text-savanna">
                 <Icon size={26} />
               </div>
-              <h3 className="mt-4 text-lg">{title}</h3>
-              <p className="mt-2 text-sm text-stone">{description}</p>
+              <div>
+                <h3 className="text-lg">{title}</h3>
+                <p className="mt-2 text-sm text-stone">{description}</p>
+              </div>
             </div>
           ))}
         </div>

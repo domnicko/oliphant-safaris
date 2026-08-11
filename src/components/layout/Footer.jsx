@@ -124,7 +124,7 @@ export default function Footer() {
 
       <div className="container-content flex flex-col items-center justify-between gap-2 py-6 text-xs text-cream/60 md:flex-row">
         <p>© {year} Oliphant Safaris. All rights reserved.</p>
-        <p>Kenya &amp; East Africa Safari Specialists</p>
+        <p>Kenya &amp; Tanzania Safari Specialists</p>
       </div>
     </footer>
   );
