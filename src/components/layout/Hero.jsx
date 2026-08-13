@@ -17,7 +17,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-savanna-dark/90 via-savanna-dark/50 to-savanna-dark/20" />
 
       <div className="container-content relative z-10 animate-fade-rise text-cream">
-        <p className="eyebrow text-gold">Kenya &amp; East Africa Safari Specialists</p>
+        <p className="eyebrow text-gold">Kenya &amp; Tanzania Safari Specialists</p>
         <h1 className="mt-4 max-w-2xl text-4xl leading-tight text-cream md:text-6xl">
           Authentic Safari Journeys, Planned Around You
         </h1>
