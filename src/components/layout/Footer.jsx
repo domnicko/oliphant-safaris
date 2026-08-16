@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Instagram, MessageCircle } from "lucide-react";
 import TikTokIcon from "../ui/TikTokIcon.jsx";
 import logo from "../../assets/logo.jpg";
-import { contactInfo, socialLinks } from "../../data/contact.js";
+import { contactInfo, socialLinks, getWhatsAppLink } from "../../data/contact.js";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -68,7 +68,7 @@ export default function Footer() {
             <li className="flex items-center gap-2">
               <MessageCircle size={16} className="shrink-0 text-gold" />
               <a
-                href={contactInfo.whatsappUrl}
+                href={getWhatsAppLink("Hi! I'd like to know more about your safari packages.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gold"

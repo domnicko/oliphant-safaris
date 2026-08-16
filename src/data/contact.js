@@ -14,3 +14,13 @@ export const socialLinks = {
   instagram: "https://www.instagram.com/oliphant_safaris/",
   tiktok: "https://www.tiktok.com/@oliphant_safaris",
 };
+
+/**
+ * Builds a WhatsApp "click to chat" link with a pre-filled message.
+ * Uses contactInfo.phone rather than the QR-style whatsappUrl above, since
+ * only phone-number-based wa.me links support pre-filled text.
+ */
+export function getWhatsAppLink(message) {
+  const digitsOnly = contactInfo.phone.replace(/[^\d]/g, "");
+  return `https://wa.me/${digitsOnly}?text=${encodeURIComponent(message)}`;
+}

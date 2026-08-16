@@ -1,5 +1,5 @@
 import WhatsAppIcon from "../ui/WhatsAppIcon.jsx";
-import { contactInfo } from "../../data/contact.js";
+import { getWhatsAppLink } from "../../data/contact.js";
 
 /**
  * Fixed WhatsApp button in the bottom-right corner, visible on every page.
@@ -9,7 +9,7 @@ import { contactInfo } from "../../data/contact.js";
 export default function FloatingWhatsApp() {
   return (
     <a
-      href={contactInfo.whatsappUrl}
+      href={getWhatsAppLink("Hi! I'd like to know more about your safari packages.")}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"

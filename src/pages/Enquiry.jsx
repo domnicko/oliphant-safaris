@@ -3,9 +3,12 @@ import { CheckCircle2, Loader2 } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import { submitEnquiry } from "../lib/enquiries.js";
 
-const DESTINATIONS = ["Kenya", "Tanzania", "Uganda", "Rwanda", "Beach & Safari", "Not sure yet"];
+const DESTINATIONS = ["Kenya", "Tanzania"];
 const SAFARI_TYPES = [
   "Kenya Safaris",
+  "Tanzania Safaris",
+  "Beach Holiday",
+  "Beach & Safari",
   "Luxury Safaris",
   "Family Safaris",
   "Honeymoon Safaris",

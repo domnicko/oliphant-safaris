@@ -2,12 +2,15 @@ import { useState } from "react";
 import { Mail, Phone, MapPin, MessageCircle, Facebook, Instagram, CheckCircle2, Loader2 } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import TikTokIcon from "../components/ui/TikTokIcon.jsx";
-import { contactInfo, socialLinks } from "../data/contact.js";
+import { contactInfo, socialLinks, getWhatsAppLink } from "../data/contact.js";
 import { submitEnquiry } from "../lib/enquiries.js";
 
-const DESTINATIONS = ["Kenya", "Tanzania", "Uganda", "Rwanda", "Beach & Safari", "Not sure yet"];
+const DESTINATIONS = ["Kenya", "Tanzania"];
 const SAFARI_TYPES = [
   "Kenya Safaris",
+  "Tanzania Safaris",
+  "Beach Holiday",
+  "Beach & Safari",
   "Luxury Safaris",
   "Family Safaris",
   "Honeymoon Safaris",
@@ -130,7 +133,7 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-savanna">WhatsApp</p>
                   <a
-                    href={contactInfo.whatsappUrl}
+                    href={getWhatsAppLink("Hi! I'd like to know more about your safari packages.")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-stone hover:text-ochre"
