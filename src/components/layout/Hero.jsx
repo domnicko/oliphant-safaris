@@ -19,7 +19,7 @@ export default function Hero() {
       <div className="container-content relative z-10 animate-fade-rise text-cream">
         <p className="eyebrow text-gold">Kenya &amp; Tanzania Safari Specialists</p>
         <h1 className="mt-4 max-w-2xl text-4xl leading-tight text-cream md:text-6xl">
-          Authentic Safari Journeys, Planned Around You
+          Authentic Safari, Planned Around You
         </h1>
         <p className="mt-6 max-w-xl text-lg text-cream/85">
           At Oliphant Safaris we are passionate about showcasing Kenya's breathtaking wildlife, culture and landscape through unforgettable safari adventures.

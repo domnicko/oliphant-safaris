@@ -1,13 +1,15 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Hotel, Car, TrainFront, Plane } from "lucide-react";
+import { Hotel, Car, TrainFront, Plane, Loader2 } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import Hero from "../components/layout/Hero.jsx";
+import PromoBanner from "../components/layout/PromoBanner.jsx";
 import TourCard from "../components/ui/TourCard.jsx";
 import CTASection from "../components/ui/CTASection.jsx";
 import TestimonialCard from "../components/ui/TestimonialCard.jsx";
-import { safaris } from "../data/safaris.js";
-import { testimonials } from "../data/testimonials.js";
-import { galleryPreviewImages } from "../data/gallery.js";
+import { getFeaturedSafaris } from "../lib/safaris.js";
+import { getTestimonials } from "../lib/testimonials.js";
+import { getGalleryPreview } from "../lib/gallery.js";
 
 const ourServices = [
   {
@@ -36,10 +38,28 @@ const ourServices = [
   },
 ];
 
-// Show a maximum of 6 featured safaris on the homepage
-const featuredSafaris = safaris.slice(0, 6);
-
 export default function Home() {
+  const [featuredSafaris, setFeaturedSafaris] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
+  const [galleryPreviewImages, setGalleryPreviewImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    Promise.all([getFeaturedSafaris(), getTestimonials(), getGalleryPreview(3)]).then(
+      ([safarisData, testimonialsData, galleryData]) => {
+        if (!isMounted) return;
+        setFeaturedSafaris(safarisData);
+        setTestimonials(testimonialsData);
+        setGalleryPreviewImages(galleryData);
+        setLoading(false);
+      }
+    );
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <>
       <Seo
@@ -47,6 +67,7 @@ export default function Home() {
         description="Oliphant Safaris designs authentic, personalized safari experiences across Kenya and East Africa — Maasai Mara wildlife tours, honeymoon safaris, family adventures, and luxury journeys."
       />
       <Hero />
+      <PromoBanner />
 
       {/* Company introduction */}
       <section className="container-content py-20 text-center">
@@ -74,11 +95,18 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {featuredSafaris.map((safari) => (
-              <TourCard key={safari.slug} safari={safari} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="mt-12 flex flex-col items-center gap-3 py-16 text-stone">
+              <Loader2 size={28} className="animate-spin text-ochre" />
+              <p className="text-sm">Loading safaris...</p>
+            </div>
+          ) : (
+            <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {featuredSafaris.map((safari) => (
+                <TourCard key={safari.slug} safari={safari} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

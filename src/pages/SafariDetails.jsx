@@ -1,16 +1,45 @@
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { MapPin, Clock, Check, X, Info, ArrowLeft } from "lucide-react";
+import { MapPin, Clock, Check, X, Info, ArrowLeft, Loader2 } from "lucide-react";
+import Seo from "../components/ui/Seo.jsx";
 import CTASection from "../components/ui/CTASection.jsx";
-import { safaris } from "../data/safaris.js";
+import { getSafariBySlug } from "../lib/safaris.js";
 
 export default function SafariDetails() {
   const { slug } = useParams();
-  const safari = safaris.find((s) => s.slug === slug);
+  const [safari, setSafari] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    setSafari(null);
+    getSafariBySlug(slug).then((data) => {
+      if (isMounted) {
+        setSafari(data);
+        setLoading(false);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [slug]);
+
+  // Still fetching
+  if (loading) {
+    return (
+      <section className="container-content flex flex-col items-center gap-3 py-24 text-stone">
+        <Loader2 size={28} className="animate-spin text-ochre" />
+        <p className="text-sm">Loading safari...</p>
+      </section>
+    );
+  }
 
   // Safari not found — guide the visitor back rather than showing a dead end
   if (!safari) {
     return (
       <section className="container-content py-24 text-center">
+        <Seo title="Safari Not Found" description="This safari could not be found." />
         <p className="eyebrow">Safari Not Found</p>
         <h1 className="mt-3 text-3xl md:text-4xl">
           We couldn't find that safari
@@ -33,6 +62,7 @@ export default function SafariDetails() {
     duration,
     startingPrice,
     image,
+    shortDescription,
     overview,
     highlights,
     itinerary,
@@ -45,11 +75,15 @@ export default function SafariDetails() {
 
   return (
     <>
+      <Seo
+        title={`${name} — ${destination}`}
+        description={shortDescription || overview}
+      />
       {/* Hero */}
       <section className="relative flex h-[55vh] min-h-[400px] items-end">
         <img
           src={image}
-          alt={`${name} — PLACEHOLDER image`}
+          alt={name}
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-savanna-dark/90 via-savanna-dark/40 to-savanna-dark/10" />
@@ -57,9 +91,9 @@ export default function SafariDetails() {
         <div className="container-content relative z-10 pb-12 text-cream">
           <Link
             to="/safaris"
-            className="inline-flex items-center gap-1 text-sm text-cream/80 hover:text-cream"
+            className="inline-flex items-center gap-2 rounded-sm border-2 border-cream px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-cream transition-colors hover:bg-cream hover:text-savanna-dark"
           >
-            <ArrowLeft size={14} />
+            <ArrowLeft size={16} />
             Back to All Safaris
           </Link>
           <h1 className="mt-4 max-w-2xl text-3xl text-cream md:text-5xl">{name}</h1>
@@ -165,7 +199,7 @@ export default function SafariDetails() {
                 <div key={index} className="aspect-square overflow-hidden rounded-sm">
                   <img
                     src={src}
-                    alt={`${name} gallery image ${index + 1} — PLACEHOLDER`}
+                    alt={`${name} gallery image ${index + 1}`}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />

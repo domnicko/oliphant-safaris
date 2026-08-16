@@ -1,0 +1,77 @@
+[
+  {
+    "src": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/migration-river-crossing.jpg",
+    "alt": "Wildebeest and zebra crossing a river during the migration",
+    "category": "Wildlife"
+  },
+  {
+    "src": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/zebras-pair.jpg",
+    "alt": "Two zebras standing close together in the grass",
+    "category": "Wildlife"
+  },
+  {
+    "src": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/flamingos-lake.jpg",
+    "alt": "Flamingos wading in a lake at sunset",
+    "category": "Landscapes"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=800&q=80",
+    "alt": "Giraffe at golden hour — PLACEHOLDER image",
+    "category": "Wildlife"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1516912481808-3406841bd33c?auto=format&fit=crop&w=800&q=80",
+    "alt": "Open plains landscape — PLACEHOLDER image",
+    "category": "Landscapes"
+  },
+  {
+    "src": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/safari-vehicle-zebras.jpg",
+    "alt": "Safari vehicle driving among zebras and wildebeest",
+    "category": "Safari Vehicles"
+  },
+  {
+    "src": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/elephants-crossing-road.jpg",
+    "alt": "Elephant herd crossing a dirt road in front of a safari vehicle",
+    "category": "Safari Vehicles"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&fit=crop&w=800&q=80",
+    "alt": "Safari lodge exterior — PLACEHOLDER image",
+    "category": "Accommodation"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+    "alt": "Tented camp interior — PLACEHOLDER image",
+    "category": "Accommodation"
+  },
+  {
+    "src": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/maasai-beadwork.jpg",
+    "alt": "Detail of traditional Maasai beaded jewelry",
+    "category": "Culture"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1547970810-dc1eac37d174?auto=format&fit=crop&w=800&q=80&sat=-20",
+    "alt": "Cultural experience — PLACEHOLDER image",
+    "category": "Culture"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
+    "alt": "Zanzibar beach — PLACEHOLDER image",
+    "category": "Beaches"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=800&q=80",
+    "alt": "Coastal sunset — PLACEHOLDER image",
+    "category": "Beaches"
+  },
+  {
+    "src": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/giraffe-hot-air-balloons.jpg",
+    "alt": "Giraffe with hot air balloons rising in the background",
+    "category": "Experiences"
+  },
+  {
+    "src": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/wildebeest-acacia-tree.jpg",
+    "alt": "Wildebeest herd near a lone acacia tree with a safari vehicle",
+    "category": "Experiences"
+  }
+]

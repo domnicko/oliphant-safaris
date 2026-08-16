@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "hot-air-balloon-safari",
+    "name": "Hot Air Balloon Safari",
+    "location": "Maasai Mara",
+    "image": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/hot-air-balloons-fleet.jpg",
+    "description": "Enjoy a breathtaking sunrise flight over the Maasai Mara, with spectacular views of the savannah and wildlife from above. The experience usually ends with a special bush breakfast."
+  },
+  {
+    "slug": "lake-naivasha-boat-ride",
+    "name": "Lake Naivasha Boat Ride",
+    "location": "Lake Naivasha",
+    "image": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/boat-ride-hippos.jpg",
+    "description": "Cruise across the calm waters of Lake Naivasha and enjoy views of hippos, birds and the surrounding landscapes. A relaxing experience perfect for nature and wildlife lovers."
+  },
+  {
+    "slug": "wildlife-photography",
+    "name": "Wildlife Photography",
+    "location": "Kenya",
+    "image": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/leopard-on-branch.jpg",
+    "description": "Capture unforgettable moments as you photograph Kenya's wildlife in their natural surroundings. Enjoy opportunities to observe and photograph animals, landscapes and the beauty of the wild while creating lasting memories of your safari."
+  },
+  {
+    "slug": "hiking-nature-walks",
+    "name": "Hiking & Nature Walks",
+    "location": "Hell's Gate, Mt. Longonot & Ngong Hills",
+    "image": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/hikers-mountain-trail.jpg",
+    "description": "Discover Kenya on foot through scenic trails, hills, cliffs and beautiful landscapes. Choose from a variety of hiking experiences depending on your fitness level and interests."
+  },
+  {
+    "slug": "sundowner",
+    "name": "Sundowner Experience",
+    "location": "Maasai Mara, Amboseli & Tsavo",
+    "image": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/sundowner-lanterns.jpg",
+    "description": "Unwind in the wilderness with a refreshing drink as the African sun sets over the savannah. A perfect way to end an exciting day on safari."
+  },
+  {
+    "slug": "bush-dinner",
+    "name": "Bush Dinner",
+    "location": "Maasai Mara, Amboseli & Tsavo",
+    "image": "https://images.unsplash.com/photo-1590523278191-995cbcda646b?auto=format&fit=crop&w=900&q=80",
+    "description": "Enjoy a memorable dinner under the African night sky, surrounded by the sights and sounds of the wilderness. Make your safari extra special with this unique dining experience."
+  },
+  {
+    "slug": "bush-breakfast",
+    "name": "Bush Breakfast",
+    "location": "Maasai Mara, Amboseli & Tsavo",
+    "image": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/bush-breakfast.jpg",
+    "description": "Start your morning with a delicious breakfast in the heart of the wilderness. Enjoy great food, beautiful scenery and the peaceful atmosphere of the African bush."
+  },
+  {
+    "slug": "maasai-village-visit",
+    "name": "Maasai Village Visit",
+    "location": "Maasai Mara",
+    "image": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/maasai-warriors-jumping.jpg",
+    "description": "Visit a traditional Maasai village and experience the community's culture, traditions and way of life. Meet local families, learn about their customs and enjoy traditional songs and dances."
+  },
+  {
+    "slug": "dolphin-tour",
+    "name": "Dolphin Tour",
+    "location": "Watamu & Diani/Wasini",
+    "image": "https://sjkddmokxkgkpydimcbi.supabase.co/storage/v1/object/public/site-images/gallery/dolphins-jumping.jpg",
+    "description": "Set out into Kenya's beautiful coastal waters in search of dolphins and other marine life. Depending on the excursion, you can also enjoy snorkeling, swimming and exploring the coastline."
+  }
+]

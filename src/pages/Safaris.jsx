@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Search } from "lucide-react";
+import { Search, Loader2 } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import TourCard from "../components/ui/TourCard.jsx";
 import CTASection from "../components/ui/CTASection.jsx";
-import { safaris } from "../data/safaris.js";
+import { getSafaris } from "../lib/safaris.js";
 
 const CATEGORIES = [
   "All Safaris",
@@ -20,20 +20,36 @@ const CATEGORIES = [
 ];
 
 export default function Safaris() {
+  const [safaris, setSafaris] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All Safaris");
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    getSafaris().then((data) => {
+      if (isMounted) {
+        setSafaris(data);
+        setLoading(false);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const filteredSafaris = useMemo(() => {
     return safaris.filter((safari) => {
       const matchesCategory =
-        activeCategory === "All Safaris" || safari.category === activeCategory;
+        activeCategory === "All Safaris" || safari.categories.includes(activeCategory);
       const matchesQuery =
         query.trim() === "" ||
         safari.name.toLowerCase().includes(query.trim().toLowerCase()) ||
         safari.destination.toLowerCase().includes(query.trim().toLowerCase());
       return matchesCategory && matchesQuery;
     });
-  }, [activeCategory, query]);
+  }, [safaris, activeCategory, query]);
 
   return (
     <>
@@ -116,27 +132,36 @@ export default function Safaris() {
 
       {/* Results */}
       <section className="container-content py-16">
-        <p className="mb-8 text-sm text-stone">
-          Showing {filteredSafaris.length} of {safaris.length} safaris
-        </p>
-
-        {filteredSafaris.length > 0 ? (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredSafaris.map((safari) => (
-              <TourCard key={safari.slug} safari={safari} />
-            ))}
+        {loading ? (
+          <div className="flex flex-col items-center gap-3 py-16 text-stone">
+            <Loader2 size={28} className="animate-spin text-ochre" />
+            <p className="text-sm">Loading safaris...</p>
           </div>
         ) : (
-          <div className="rounded-sm bg-sand-light py-16 text-center">
-            <p className="text-lg text-savanna">No safaris match your search.</p>
-            <p className="mt-2 text-sm text-stone">
-              Try a different category or search term, or{" "}
-              <Link to="/enquiry" className="text-ochre underline">
-                tell us what you're looking for
-              </Link>
-              .
+          <>
+            <p className="mb-8 text-sm text-stone">
+              Showing {filteredSafaris.length} of {safaris.length} safaris
             </p>
-          </div>
+
+            {filteredSafaris.length > 0 ? (
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {filteredSafaris.map((safari) => (
+                  <TourCard key={safari.slug} safari={safari} />
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-sm bg-sand-light py-16 text-center">
+                <p className="text-lg text-savanna">No safaris match your search.</p>
+                <p className="mt-2 text-sm text-stone">
+                  Try a different category or search term, or{" "}
+                  <Link to="/enquiry" className="text-ochre underline">
+                    tell us what you're looking for
+                  </Link>
+                  .
+                </p>
+              </div>
+            )}
+          </>
         )}
       </section>
 

@@ -1,8 +1,5 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/layout/Navbar.jsx";
-import Footer from "./components/layout/Footer.jsx";
-import ScrollToTop from "./components/layout/ScrollToTop.jsx";
-import FloatingWhatsApp from "./components/layout/FloatingWhatsApp.jsx";
+import { Routes, Route } from "react-router-dom";
+import PublicLayout from "./components/layout/PublicLayout.jsx";
 
 import Home from "./pages/Home.jsx";
 import Safaris from "./pages/Safaris.jsx";
@@ -14,38 +11,70 @@ import Contact from "./pages/Contact.jsx";
 import Enquiry from "./pages/Enquiry.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
-function App() {
-  const location = useLocation();
+import ProtectedRoute from "./components/admin/ProtectedRoute.jsx";
+import AdminLayout from "./components/admin/AdminLayout.jsx";
+import AdminLogin from "./pages/admin/AdminLogin.jsx";
+import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
+import AdminSafaris from "./pages/admin/AdminSafaris.jsx";
+import AdminSafariForm from "./pages/admin/AdminSafariForm.jsx";
+import AdminExperiences from "./pages/admin/AdminExperiences.jsx";
+import AdminExperienceForm from "./pages/admin/AdminExperienceForm.jsx";
+import AdminGallery from "./pages/admin/AdminGallery.jsx";
+import AdminGalleryForm from "./pages/admin/AdminGalleryForm.jsx";
+import AdminTestimonials from "./pages/admin/AdminTestimonials.jsx";
+import AdminTestimonialForm from "./pages/admin/AdminTestimonialForm.jsx";
+import AdminEnquiries from "./pages/admin/AdminEnquiries.jsx";
+import AdminPromotions from "./pages/admin/AdminPromotions.jsx";
+import AdminPromotionForm from "./pages/admin/AdminPromotionForm.jsx";
 
+function App() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <ScrollToTop />
-      <main className="flex-1">
-        {/*
-          Keying on pathname remounts this div on every route change, which
-          restarts the CSS animation below — a lightweight page-transition
-          approach using Tailwind's existing keyframe system rather than a
-          routing/animation library. prefers-reduced-motion is already
-          handled globally in index.css, so no extra logic is needed here.
-        */}
-        <div key={location.pathname} className="animate-page-in">
-          <Routes location={location}>
-            <Route path="/" element={<Home />} />
-            <Route path="/safaris" element={<Safaris />} />
-            <Route path="/safaris/:slug" element={<SafariDetails />} />
-            <Route path="/experiences" element={<Experiences />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/enquiry" element={<Enquiry />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-    </div>
+    <Routes>
+      {/* Admin login — standalone, no public nav/footer, no protection
+          (this IS the page that lets you become authenticated) */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+
+      {/* Admin panel — protected, uses its own sidebar layout */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<AdminDashboard />} />
+        <Route path="safaris" element={<AdminSafaris />} />
+        <Route path="safaris/new" element={<AdminSafariForm />} />
+        <Route path="safaris/:id/edit" element={<AdminSafariForm />} />
+        <Route path="experiences" element={<AdminExperiences />} />
+        <Route path="experiences/new" element={<AdminExperienceForm />} />
+        <Route path="experiences/:id/edit" element={<AdminExperienceForm />} />
+        <Route path="gallery" element={<AdminGallery />} />
+        <Route path="gallery/new" element={<AdminGalleryForm />} />
+        <Route path="gallery/:id/edit" element={<AdminGalleryForm />} />
+        <Route path="testimonials" element={<AdminTestimonials />} />
+        <Route path="testimonials/new" element={<AdminTestimonialForm />} />
+        <Route path="testimonials/:id/edit" element={<AdminTestimonialForm />} />
+        <Route path="enquiries" element={<AdminEnquiries />} />
+        <Route path="promotions" element={<AdminPromotions />} />
+        <Route path="promotions/new" element={<AdminPromotionForm />} />
+        <Route path="promotions/:id/edit" element={<AdminPromotionForm />} />
+      </Route>
+
+      {/* Public site — nav, footer, page transitions */}
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/safaris" element={<Safaris />} />
+        <Route path="/safaris/:slug" element={<SafariDetails />} />
+        <Route path="/experiences" element={<Experiences />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/enquiry" element={<Enquiry />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 

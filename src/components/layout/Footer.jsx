@@ -22,7 +22,7 @@ export default function Footer() {
             </p>
           </div>
           <p className="mt-4 max-w-xs text-sm text-cream/70">
-            Authentic safari experiences across Kenya and East Africa —
+            Authentic safari experiences across East Africa —
             planned around you.
           </p>
         </div>

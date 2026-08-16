@@ -46,7 +46,7 @@ export default function Navbar() {
             className="h-14 w-14 rounded-full shadow-sm md:h-16 md:w-16"
           />
           <span className="font-display text-2xl font-semibold text-savanna">
-            Oliphant <span className="text-ochre">Safaris</span>
+            OLIPHANT <span className="text-ochre">SAFARIS</span>
           </span>
         </Link>
 

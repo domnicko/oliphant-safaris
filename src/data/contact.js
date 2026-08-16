@@ -6,7 +6,7 @@ export const contactInfo = {
   // Converted from local format (0711 492 260) to international for reliable tel: links
   phone: "+254 711 492 260",
   whatsappUrl: "https://wa.me/qr/KWRNU5HW7AJTD1",
-  location: "Banana Raini Rd, Ruaka",
+  location: "Nairobi, Kenya",
 };
 
 export const socialLinks = {

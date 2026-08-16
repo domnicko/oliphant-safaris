@@ -1,9 +1,26 @@
-import { MapPin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { MapPin, Loader2 } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import CTASection from "../components/ui/CTASection.jsx";
-import { experiences } from "../data/experiences.js";
+import { getExperiences } from "../lib/experiences.js";
 
 export default function Experiences() {
+  const [experiences, setExperiences] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    getExperiences().then((data) => {
+      if (isMounted) {
+        setExperiences(data);
+        setLoading(false);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <>
       <Seo
@@ -27,40 +44,47 @@ export default function Experiences() {
 
       {/* Experiences grid */}
       <section className="container-content py-16">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {experiences.map((experience) => (
-            <article
-              key={experience.slug}
-              className="overflow-hidden rounded-sm bg-white shadow-sm"
-            >
-              <div className="h-56 overflow-hidden">
-                <img
-                  src={experience.image}
-                  alt={experience.name}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-2">
-                  <h2 className="text-xl text-savanna">{experience.name}</h2>
-                  {experience.price && (
-                    <span className="shrink-0 rounded-full bg-ochre/10 px-3 py-1 text-xs font-semibold text-ochre">
-                      {experience.price}
-                    </span>
-                  )}
+        {loading ? (
+          <div className="flex flex-col items-center gap-3 py-16 text-stone">
+            <Loader2 size={28} className="animate-spin text-ochre" />
+            <p className="text-sm">Loading experiences...</p>
+          </div>
+        ) : (
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {experiences.map((experience) => (
+              <article
+                key={experience.slug}
+                className="overflow-hidden rounded-sm bg-white shadow-sm"
+              >
+                <div className="h-56 overflow-hidden">
+                  <img
+                    src={experience.image}
+                    alt={experience.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
-                {experience.location && (
-                  <p className="mt-1 flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-stone">
-                    <MapPin size={12} className="text-ochre" />
-                    {experience.location}
-                  </p>
-                )}
-                <p className="mt-3 text-sm text-stone">{experience.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+                <div className="p-6">
+                  <div className="flex items-start justify-between gap-2">
+                    <h2 className="text-xl text-savanna">{experience.name}</h2>
+                    {experience.price && (
+                      <span className="shrink-0 rounded-full bg-ochre/10 px-3 py-1 text-xs font-semibold text-ochre">
+                        {experience.price}
+                      </span>
+                    )}
+                  </div>
+                  {experience.location && (
+                    <p className="mt-1 flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-stone">
+                      <MapPin size={12} className="text-ochre" />
+                      {experience.location}
+                    </p>
+                  )}
+                  <p className="mt-3 text-sm text-stone">{experience.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
 
       <CTASection

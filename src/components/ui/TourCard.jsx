@@ -6,8 +6,9 @@ import { MapPin, Clock, ArrowRight } from "lucide-react";
  * Expects a `safari` object shaped like the entries in src/data/safaris.js.
  */
 export default function TourCard({ safari }) {
-  const { slug, name, destination, duration, startingPrice, image, shortDescription } =
+  const { slug, name, destination, duration, startingPrice, image, shortDescription, categories } =
     safari;
+  const badges = categories && categories.length > 0 ? categories : [safari.category];
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-sm bg-white shadow-sm transition-shadow hover:shadow-lg">
@@ -18,9 +19,16 @@ export default function TourCard({ safari }) {
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <span className="absolute left-4 top-4 rounded-sm bg-cream/95 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-savanna">
-          {safari.category}
-        </span>
+        <div className="absolute left-4 top-4 flex flex-wrap gap-1.5">
+          {badges.map((cat) => (
+            <span
+              key={cat}
+              className="rounded-sm bg-cream/95 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-savanna"
+            >
+              {cat}
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className="flex flex-1 flex-col p-6">

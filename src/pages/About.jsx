@@ -1,7 +1,6 @@
 import { Compass, ShieldCheck, Users } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import CTASection from "../components/ui/CTASection.jsx";
-import { team } from "../data/team.js";
 
 const whyChooseUs = [
   {
@@ -111,37 +110,6 @@ export default function About() {
                 </div>
                 <h3 className="mt-4 text-lg">{title}</h3>
                 <p className="mt-2 text-sm text-stone">{description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="horizon-divider" />
-
-      {/* Team */}
-      <section className="bg-sand-light py-20">
-        <div className="container-content">
-          <div className="text-center">
-            <p className="eyebrow">Meet the People Behind the Journeys</p>
-            <h2 className="mx-auto mt-3 max-w-2xl text-3xl md:text-4xl">
-              Our Team
-            </h2>
-          </div>
-
-          <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {team.map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="mx-auto h-40 w-40 overflow-hidden rounded-full">
-                  <img
-                    src={member.image}
-                    alt={`${member.name} — PLACEHOLDER photo`}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <h3 className="mt-4 text-lg text-savanna">{member.name}</h3>
-                <p className="text-sm text-stone">{member.role}</p>
               </div>
             ))}
           </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
+import { submitEnquiry } from "../lib/enquiries.js";
 
 const DESTINATIONS = ["Kenya", "Tanzania", "Uganda", "Rwanda", "Beach & Safari", "Not sure yet"];
 const SAFARI_TYPES = [
@@ -51,23 +52,34 @@ export default function Enquiry() {
   const [values, setValues] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
+    setSubmitError("");
 
     if (Object.keys(validationErrors).length === 0) {
-      // FRONTEND ONLY — no backend, database, availability system, or
-      // payment integration wired up yet. Replace this with a real
-      // submission once those are ready.
-      setSubmitted(true);
-      setValues(initialForm);
+      setSubmitting(true);
+      try {
+        const { requirements, ...rest } = values;
+        await submitEnquiry({ formType: "enquiry", message: requirements, ...rest });
+        setSubmitted(true);
+        setValues(initialForm);
+      } catch (err) {
+        setSubmitError(
+          "Something went wrong sending your enquiry. Please try again, or reach us directly via WhatsApp or email."
+        );
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 
@@ -102,11 +114,14 @@ export default function Enquiry() {
             <div className="mb-6 flex items-start gap-3 rounded-sm bg-savanna/10 p-4 text-sm text-savanna">
               <CheckCircle2 size={20} className="mt-0.5 shrink-0" />
               <p>
-                Thanks — your enquiry has been noted. (This form isn't
-                connected to a backend, database, or booking system yet, so
-                nothing was actually submitted. That's the next stage of
-                development.)
+                Thanks — your enquiry has been sent. We'll follow up with a
+                tailored itinerary and pricing soon.
               </p>
+            </div>
+          )}
+          {submitError && (
+            <div className="mb-6 rounded-sm bg-red-50 p-4 text-sm text-red-600">
+              {submitError}
             </div>
           )}
 
@@ -279,8 +294,19 @@ export default function Enquiry() {
             </div>
 
             <div className="sm:col-span-2">
-              <button type="submit" className="btn-primary w-full sm:w-auto">
-                Submit Enquiry
+              <button
+                type="submit"
+                disabled={submitting}
+                className="btn-primary w-full disabled:opacity-60 sm:w-auto"
+              >
+                {submitting ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Enquiry"
+                )}
               </button>
             </div>
           </form>

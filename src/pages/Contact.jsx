@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, MessageCircle, Facebook, Instagram, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Facebook, Instagram, CheckCircle2, Loader2 } from "lucide-react";
 import Seo from "../components/ui/Seo.jsx";
 import TikTokIcon from "../components/ui/TikTokIcon.jsx";
 import { contactInfo, socialLinks } from "../data/contact.js";
+import { submitEnquiry } from "../lib/enquiries.js";
 
 const DESTINATIONS = ["Kenya", "Tanzania", "Uganda", "Rwanda", "Beach & Safari", "Not sure yet"];
 const SAFARI_TYPES = [
@@ -42,22 +43,33 @@ export default function Contact() {
   const [values, setValues] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
+    setSubmitError("");
 
     if (Object.keys(validationErrors).length === 0) {
-      // FRONTEND ONLY — no backend wired up yet. Replace this with a real
-      // submission (API call / email service) once the backend is ready.
-      setSubmitted(true);
-      setValues(initialForm);
+      setSubmitting(true);
+      try {
+        await submitEnquiry({ formType: "contact", ...values });
+        setSubmitted(true);
+        setValues(initialForm);
+      } catch (err) {
+        setSubmitError(
+          "Something went wrong sending your message. Please try again, or reach us directly using the details on this page."
+        );
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 
@@ -184,10 +196,14 @@ export default function Contact() {
               <div className="mb-6 flex items-start gap-3 rounded-sm bg-savanna/10 p-4 text-sm text-savanna">
                 <CheckCircle2 size={20} className="mt-0.5 shrink-0" />
                 <p>
-                  Thanks — your message has been noted. (This form isn't
-                  connected to a backend yet, so nothing was actually sent.
-                  We'll wire this up to real email/booking handling next.)
+                  Thanks — your message has been sent. We'll get back to you
+                  soon.
                 </p>
+              </div>
+            )}
+            {submitError && (
+              <div className="mb-6 rounded-sm bg-red-50 p-4 text-sm text-red-600">
+                {submitError}
               </div>
             )}
 
@@ -323,8 +339,15 @@ export default function Contact() {
               </div>
 
               <div className="sm:col-span-2">
-                <button type="submit" className="btn-primary">
-                  Send Message
+                <button type="submit" disabled={submitting} className="btn-primary disabled:opacity-60">
+                  {submitting ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
               </div>
             </form>
